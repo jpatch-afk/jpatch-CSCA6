@@ -60,7 +60,14 @@ public class Cafe extends Building{
       nCreams += nCreams;
       nCups += nCups; 
     }
-    
+
+    /**
+    * Accessor to the building parameters
+    */
+    public void getBuilding() { //makes sure that the attributes of the building class are used 
+      System.out.println("Building name: " + name + "\nBuilding Address: " + address + "\nNumber of Floors: " +nFloors);
+  }
+
     public static void main(String[] args) {
         Cafe newCafe = new Cafe(100, 200, 200, 50, "Compass Cafe", "Address", 1);
         newCafe.sellCoffee(12, 2, 3);
