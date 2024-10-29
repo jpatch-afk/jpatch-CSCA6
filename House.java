@@ -98,6 +98,13 @@ public class House extends Building{
     }
   }
 
+  /**
+    * Accessor to the building parameters
+    */
+    public void getBuilding() { //makes sure that the attributes of the building class are used 
+      System.out.println("Building name: " + name + "\nBuilding Address: " + address + "\nNumber of Floors: " +nFloors);
+  }
+
   public static void main(String[] args) {
     House myHouse = new House(false,"Haven", "110 Elm Street", 3);
     myHouse.moveIn("Taylor Swift");
