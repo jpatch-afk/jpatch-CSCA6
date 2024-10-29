@@ -109,6 +109,14 @@ public class Library extends Building {
       }
     }
   }
+
+  /**
+    * Accessor to the building parameters
+    */
+    public void getBuilding() { //makes sure that the attributes of the building class are used 
+      System.out.println("Building name: " + name + "\nBuilding Address: " + address + "\nNumber of Floors: " +nFloors);
+  }
+
   public static void main(String[] args) {
     Library newLibrary = new Library("Neilson Library", "Address", 4);
     newLibrary.addTitle("Pride & Prejudice");
