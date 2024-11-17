@@ -3,9 +3,6 @@ import java.util.ArrayList;
 public class House extends Building{
   private ArrayList<String> residents = new ArrayList<String>();
   private boolean hasDiningRoom;
-  private String name; 
-  private String address; 
-  private int nFloors; 
 
   /**
    * Constructor 
@@ -14,10 +11,13 @@ public class House extends Building{
    * @param address
    * @param nFloors
    */
-  public House(boolean hasDiningRoom, String name, String address, int nFloors) {
+  public House(String name, String address, int nFloors, boolean hasDiningRoom) {
     super(name, address, nFloors);
     System.out.println("You have built a house: 🏠");
     this.hasDiningRoom = hasDiningRoom;
+    this.name = name; 
+    this.address = address;
+    this.nFloors = nFloors; 
     residents.add("Sophia Smith"); //the ArrayList is null otherwise and returns an error 
   }
 
@@ -25,7 +25,7 @@ public class House extends Building{
    * Returns whether the house has a dining room 
    * @return boolean; has a dining room or not
    */
-  public boolean hasADiningRoom(){
+  public boolean hasDiningRoom(){
     if (this.hasDiningRoom) {
       System.out.println("This house has a dining hall!");
       return true; 
@@ -58,10 +58,13 @@ public class House extends Building{
   public void moveIn(String name) {
     if (!residents.contains(name)) {
       residents.add(name);
-      System.out.println( name + "has sucessfully moved in!");
+      System.out.println( name + " has sucessfully moved in!");
+    }
+    else if (residents.contains(name)){
+      System.out.println(name + " already lives here, please try again.");
     }
     else {
-      System.out.println(name + " already lives here, please try again.");
+    throw new RuntimeException("Please enter a name.");
     }
   }
 
@@ -76,9 +79,12 @@ public class House extends Building{
       System.out.println(name + " has successfully moved out!");
       return name; 
     }
-    else {
+    else if (!residents.contains(name)){
       System.out.println(name + " does not live here, please try another house.");
       return name; 
+    }
+    else {
+      throw new RuntimeException("Please enter a name.");
     }
   }
 
@@ -92,9 +98,12 @@ public class House extends Building{
       System.out.println(person + " does live here!");
       return true; 
     }
-    else {
+    else  if (!residents.contains(person)){
       System.out.println(person + " does not live here!");
       return false; 
+    }
+    else {
+      throw new RuntimeException("Please enter a name.");
     }
   }
 
@@ -106,7 +115,7 @@ public class House extends Building{
   }
 
   public static void main(String[] args) {
-    House myHouse = new House(false,"Haven", "110 Elm Street", 3);
+    House myHouse = new House("Haven", "110 Elm Street", 3, false);
     myHouse.moveIn("Taylor Swift");
   }
 }
