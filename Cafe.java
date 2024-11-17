@@ -3,12 +3,9 @@ public class Cafe extends Building{
     private int nSugarPackets;
     private int nCreams;
     private int nCups;
-    private String name; 
-    private String address; 
-    private int nFloors; 
 
     /**
-     * Constructor 
+     * Constructor; initializes all needed variables 
      * @param nCoffeeOunces
      * @param nSugarPackets
      * @param nCreams
@@ -24,13 +21,16 @@ public class Cafe extends Building{
         this.nSugarPackets = nSugarPackets;
         this.nCreams = nCreams;
         this.nCups = nCups; 
+        this.name = name;
+        this.address = address;
+        this.nFloors = nFloors; 
     }
 
     /**
      * Sells a coffee and decreases the amount of supplies by the amount in the parameters
      * @param size
-     * @param nSugarPackets
-     * @param nCreams
+     * @param nSugar
+     * @param nCream
      */
     public void sellCoffee(int size, int nSugar, int nCream) { //preventing double variables and adding all of the sugar packets and creams in stock to the coffee 
         if (nCoffeeOunces > 0 && nSugarPackets > 0 && nCreams > 0) {
@@ -43,7 +43,7 @@ public class Cafe extends Building{
             System.out.println("Coffee Ounces: " + nCoffeeOunces + "\nSugar Packets: " + nSugarPackets + "\nCreams: " + nCreams + "\nCups: " + nCups);
         }
         else {
-            System.out.println("This cafe is out of supplies, please restock.");
+            throw new RuntimeException("This cafe is out of supplies, please restock.");
         }
     }
 
@@ -59,14 +59,16 @@ public class Cafe extends Building{
       nSugarPackets += nSugarPackets;
       nCreams += nCreams;
       nCups += nCups; 
+      System.out.println("Supplies:");
+      System.out.println("Coffee Ounces: " + nCoffeeOunces + "\nSugar Packets: " + nSugarPackets + "\nCreams: " + nCreams + "\nCups: " + nCups);
     }
 
-    /**
+   /**
     * Accessor to the building parameters
     */
     public void getBuilding() { //makes sure that the attributes of the building class are used 
-      System.out.println("Building name: " + name + "\nBuilding Address: " + address + "\nNumber of Floors: " +nFloors);
-  }
+        System.out.println("Building name: " + name + "\nBuilding Address: " + address + "\nNumber of Floors: " +nFloors);
+    }
 
     public static void main(String[] args) {
         Cafe newCafe = new Cafe(100, 200, 200, 50, "Compass Cafe", "Address", 1);
